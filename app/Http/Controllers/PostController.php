@@ -18,13 +18,9 @@ class PostController extends Controller
         $tags = Tag::all();
         $categories = Category::all();
 
-        return view('posts.index', [
-            'posts' => $posts,
-            'tags' => $tags,
-            'categories' => $categories
-        ]);
-    }
-
+        return view('posts.index', compact('posts', 'tags', 'categories'));
+   }
+ 
     public function create(): View
     {
         $tags = Tag::all();
