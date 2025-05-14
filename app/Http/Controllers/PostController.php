@@ -19,7 +19,7 @@ class PostController extends Controller
         $categories = Category::all();
 
         return view('posts.index', compact('posts', 'tags', 'categories'));
-   }
+    }
  
     public function create(): View
     {
