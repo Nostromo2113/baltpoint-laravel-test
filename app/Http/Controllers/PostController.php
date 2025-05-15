@@ -14,13 +14,13 @@ class PostController extends Controller
 {
     public function index(): View
     {
-        $posts = Post::all();
+        $posts = Post::with(['category', 'tags'])->get();
         $tags = Tag::all();
         $categories = Category::all();
 
         return view('posts.index', compact('posts', 'tags', 'categories'));
     }
- 
+
     public function create(): View
     {
         $tags = Tag::all();
@@ -43,6 +43,7 @@ class PostController extends Controller
 
     public function edit(Post $post): View
     {
+        $post->load('tags');
         $tags = Tag::all();
         $categories = Category::all();
 
